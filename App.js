@@ -3,6 +3,11 @@ import { Switch } from '@rneui/themed';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import './App.css';
+
+// Change main width based on whether width < height - if so then thin screen
+//n backen json [words], quantity, 
+
 
 // Example Data
 var user1 = ['1', 'Joun_Black.png', 'TitanCarrot', 32];
@@ -59,11 +64,19 @@ export default function App() {
       styTheme = styles.darkMode;
       styBox = styles.boxDark;
       styText = styles.whiteText;
+      document.body.classList.add('bg-black');
+      if (document.body.classList.contains('bg-white')) {
+        document.body.classList.remove('bg-white');
+      }
       break;
     case false:
       styTheme = styles.lightMode;
       styBox = styles.boxLight;
       styText = styles.blackText;
+      document.body.classList.add('bg-white');
+      if (document.body.classList.contains('bg-black')) {
+        document.body.classList.remove('bg-black');
+      }
       break;
   }
 
