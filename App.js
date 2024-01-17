@@ -4,7 +4,20 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
+/// IDEAS
+// COUNT MESSAGES FROM USERS
+// MAYBE WORDS?
+// copium board
+// get user profile img from disc api? (idk if possible)
+// seperate page for word pereference (intensive on poor joun) 
 
+// Example Data
+var user1 = ['1', 'Joun_Black.png', 'TitanCarrot', 32];
+var user2 = ['2', 'Joun_Black.png', '121212342', 15];
+var user3 = ['3', 'Joun_Black.png', '121212423', 334];
+var user4 = ['4', 'Joun_Black.png', '12124324', 18];
+
+var users = [user1, user2, user3, user4];
 
 
 const storeData =  (key, value) => {
@@ -13,6 +26,17 @@ const storeData =  (key, value) => {
 
 const retrieveData = (key) => {
     return JSON.parse((localStorage.getItem(key)));
+};
+
+
+const Block = props => {
+  return(
+    <View style={props.sty}>
+      <Image style={{aspectRatio: '1/1', height: '85%', borderWidth: 0, borderRadius: '50%', marginHorizontal: 10,}} source={require('/assets/' + props.img)}/>
+      <Text style={[{flex: 1}, props.textColor]}>{props.name}</Text>
+      <Text style={[{flex: 1, textAlign: 'center'}, props.textColor]}>{props.num}</Text>
+  </View>
+  );
 };
 
 // Get user set theme
@@ -27,15 +51,21 @@ export default function App() {
     storeData('@theme', theme);
   });
   
-  let sty;
+  let styTheme;
+  let styBox;
+  let styText;
 
   switch(theme)
   {
     case true:
-      sty = styles.darkMode;
+      styTheme = styles.darkMode;
+      styBox = styles.boxDark;
+      styText = styles.whiteText;
       break;
     case false:
-      sty = styles.lightMode;
+      styTheme = styles.lightMode;
+      styBox = styles.boxLight;
+      styText = styles.blackText;
       break;
   }
 
@@ -46,13 +76,21 @@ export default function App() {
         `Joun Board`,
     }}>
 
-    <View style={sty}>
-      <Image style={{width: 100, height: 100}} source={require('/assets/JounG_B.gif')}/>
+    <View style={styTheme}>
+      <Image style={{width: 400, height: 400}} source={require('/assets/JounG_B.gif')}/>
 
-        <Switch
+      {users.map(item => (
+        <Block key={item[0]} sty={styBox} textColor={styText} img={item[1]} name={item[2]} num={item[3]}></Block>
+      ))}
+
+      <Switch
+        trackColor={{false: 'black', true: 'white'}}
+        thumbColor={'black'}
+        activeThumbColor={'white'}
         value={theme}
         onValueChange={(value) => setTheme(value)}
       />
+
       <StatusBar style="auto" />
     </View>
     
@@ -75,4 +113,40 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  boxLight:{
+    width: 500,
+    height: 60,
+    borderWidth: 2,
+    borderRadius: 15,
+    marginBottom: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  boxDark:{
+    width: 500,
+    height: 60,
+    borderWidth: 2,
+    borderRadius: 15,
+    marginBottom: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: 'white',
+  },
+
+  whiteText:{
+    color: 'white'
+  },
+
+  blackText:{
+    color: 'black',
+  },
+
 });
+
+/*
+<View style={styles.boxDark}>
+<Image style={{aspectRatio: '1/1', height: '85%', borderWidth: 0, borderRadius: '50%', marginHorizontal: 10,}} source={require('/assets/Joun_Black.png')}/>
+<Text style={styles.whiteText}>Bruh</Text>
+<Text style={[{flex: 1,   textAlign: 'center',}, styles.whiteText]}>Bruh</Text>
+</View>*/
