@@ -4,20 +4,17 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-/// IDEAS
-// COUNT MESSAGES FROM USERS
-// MAYBE WORDS?
-// copium board
-// get user profile img from disc api? (idk if possible)
-// seperate page for word pereference (intensive on poor joun) 
-
 // Example Data
 var user1 = ['1', 'Joun_Black.png', 'TitanCarrot', 32];
-var user2 = ['2', 'Joun_Black.png', '121212342', 15];
+var user2 = ['2', 'Joun_Black.png', 'dankmemerjake', 15];
 var user3 = ['3', 'Joun_Black.png', '121212423', 334];
 var user4 = ['4', 'Joun_Black.png', '12124324', 18];
+var user5 = ['1', 'Joun_Black.png', 'TitanCarrot', 32];
+var user6 = ['2', 'Joun_Black.png', '121212342', 15];
+var user7 = ['3', 'Joun_Black.png', '121212423', 334];
+var user8 = ['4', 'Joun_Black.png', '12124324', 18];
 
-var users = [user1, user2, user3, user4];
+var users = [user1, user2, user3, user4, user5, user6, user7, user8];
 
 
 const storeData =  (key, value) => {
@@ -38,6 +35,7 @@ const Block = props => {
   </View>
   );
 };
+
 
 // Get user set theme
 var c = retrieveData('@theme');
