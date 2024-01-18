@@ -5,6 +5,10 @@ import { StyleSheet, Image, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import './App.css';
 
+// Get route scripts
+import GetWords from './routes/getWords';
+
+
 // Change main width based on whether width < height - if so then thin screen
 //n backen json [words], quantity, 
 
@@ -14,12 +18,8 @@ var user1 = ['1', 'Joun_Black.png', 'TitanCarrot', 32];
 var user2 = ['2', 'Joun_Black.png', 'dankmemerjake', 15];
 var user3 = ['3', 'Joun_Black.png', '121212423', 334];
 var user4 = ['4', 'Joun_Black.png', '12124324', 18];
-var user5 = ['1', 'Joun_Black.png', 'TitanCarrot', 32];
-var user6 = ['2', 'Joun_Black.png', '121212342', 15];
-var user7 = ['3', 'Joun_Black.png', '121212423', 334];
-var user8 = ['4', 'Joun_Black.png', '12124324', 18];
 
-var users = [user1, user2, user3, user4, user5, user6, user7, user8];
+var users = [user1, user2, user3, user4];
 
 
 const storeData =  (key, value) => {
@@ -29,7 +29,6 @@ const storeData =  (key, value) => {
 const retrieveData = (key) => {
     return JSON.parse((localStorage.getItem(key)));
 };
-
 
 const Block = props => {
   return(
@@ -101,8 +100,9 @@ export default function App() {
         value={theme}
         onValueChange={(value) => setTheme(value)}
       />
-
+      <GetWords/>
       <StatusBar style="auto" />
+
     </View>
     
     </NavigationContainer>
