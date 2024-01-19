@@ -12,11 +12,11 @@ const GetWords = () => {
  
     const fetchData = async () => {
         try {
-        const response = await axios.get('http://localhost:3000/api/getUsers');
-        setData(response.data);
+            const response = await axios.get('http://localhost:3000/api/getUsers');
+            setData(response.data);
         } catch (e)
         {
-        console.log('Error fetching data: ', e);
+            console.log('Error fetching data: ', e);
         }
     
     };
