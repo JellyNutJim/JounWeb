@@ -2,6 +2,10 @@
 
 exports.GetWords = async(req, res) => {
     const origin = req.headers.origin;
-    res.setHeader('Access-Control-Allow-Origin', origin);
+    if (origin != undefined)
+    {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    
     res.json('Hello World!')
 }

@@ -12,5 +12,6 @@ const setUser = require('../controllers/setUser');
 const router = express.Router();
 
 router.get('/api/getWords', getWords.GetWords); // getWords.func
+router.get('/api/getUsers', getUsers.GetUsers); 
 
 module.exports = router;

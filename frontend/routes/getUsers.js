@@ -13,6 +13,7 @@ const GetWords = () => {
     const fetchData = async () => {
         try {
         const response = await axios.get('http://localhost:3000/api/getUsers');
+        var users = JSON.parse(data)
         setData(response.data);
         } catch (e)
         {
