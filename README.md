@@ -1,2 +1,2 @@
 # JounWeb
- Joun frontend
+ Joun front and backend
