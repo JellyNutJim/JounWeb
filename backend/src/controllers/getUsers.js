@@ -1,6 +1,6 @@
 // controllers/getUsers.js
 const fs = require('fs');
-const j = require('../../data/users.json');
+const j = require('../data/users.json');
 //j = JSON.stringify(j);
 
 
@@ -10,5 +10,5 @@ exports.GetUsers = async(req, res) => {
     {
         res.setHeader('Access-Control-Allow-Origin', origin);
     }
-    res.json(j);
+    res.json(JSON.stringify(j));
 }
